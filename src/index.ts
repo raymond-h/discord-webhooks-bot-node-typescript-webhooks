@@ -1,10 +1,9 @@
 import fastify from 'fastify';
+import { helloWorld } from './hello-world';
 
 const server = fastify({ logger: true });
 
-server.get('/', async () => {
-  return { hello: 'world' };
-});
+server.get('/', helloWorld);
 
 const start = async () => {
   try {
