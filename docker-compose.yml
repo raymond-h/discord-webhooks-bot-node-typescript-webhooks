@@ -6,4 +6,4 @@ services:
     expose:
       - '3000'
     labels:
-      dockergen.host: '${VIRTUAL_HOST}'
+      docker-gen.host: '${VIRTUAL_HOST}'
