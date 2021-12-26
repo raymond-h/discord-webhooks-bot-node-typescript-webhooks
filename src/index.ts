@@ -3,7 +3,7 @@ import { helloWorld } from './hello-world';
 
 const server = fastify({ logger: true });
 
-server.get('/', helloWorld);
+server.post('/', helloWorld);
 
 const start = async () => {
   try {
