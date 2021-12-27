@@ -1,17 +1,14 @@
 import fastify from 'fastify';
 import { create } from 'ipfs-http-client';
 import { helloWorld } from './hello-world';
+import { showImage } from './image';
 
 let ipfsClient: ReturnType<typeof create>;
 const server = fastify({ logger: true });
 
 server.post('/', helloWorld);
 
-server.get('/ipfs-peer-id', async () => {
-  const id = await ipfsClient.id();
-
-  return { id: id.id };
-});
+server.post('/image', () => showImage(ipfsClient));
 
 const start = async () => {
   try {
