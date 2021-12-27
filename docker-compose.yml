@@ -3,7 +3,14 @@ version: '3.9'
 services:
   app:
     build: .
+    environment:
+      IPFS_API: 'http://ipfs:5001/api/v0'
     expose:
       - '3000'
     labels:
       docker-gen.host: '${VIRTUAL_HOST}'
+
+networks:
+  ipfsnet:
+    external: true
+    name: ipfs-docker-proxy
