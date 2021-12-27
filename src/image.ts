@@ -11,7 +11,6 @@ export async function showImage(
   const gatewayUrl = `https://${cid.toV1()}.ipfs.dweb.link`;
 
   return {
-    message: 'Good evening; take this frog.',
-    imageUrl: gatewayUrl,
+    message: `Good evening; take this frog.\n${gatewayUrl}`,
   };
 }
