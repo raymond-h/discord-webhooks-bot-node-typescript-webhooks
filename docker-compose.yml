@@ -9,6 +9,8 @@ services:
       - '3000'
     labels:
       docker-gen.host: '${VIRTUAL_HOST}'
+    networks:
+      - 'ipfsnet'
 
 networks:
   ipfsnet:
