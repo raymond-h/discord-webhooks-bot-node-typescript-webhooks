@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "allOf": [
+    {
+      "$ref": "#/definitions/Pick<WebhookRequest,\"arguments\">"
+    },
+    {
+      "$ref": "#/definitions/Partial<Omit<WebhookRequest,\"arguments\">>"
+    }
+  ],
+  "definitions": {
+    "Partial<Omit<WebhookRequest,\"arguments\">>": {
+      "properties": {
+        "author": {
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "username": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "username"
+          ],
+          "type": "object"
+        },
+        "channel": {
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "type"
+          ],
+          "type": "object"
+        },
+        "command": {
+          "type": "string"
+        },
+        "guild": {
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "name"
+          ],
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "Pick<WebhookRequest,\"arguments\">": {
+      "properties": {
+        "arguments": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "arguments"
+      ],
+      "type": "object"
+    }
+  }
+}

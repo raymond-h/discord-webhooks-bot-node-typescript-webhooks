@@ -21,6 +21,7 @@
     "singleQuote": true
   },
   "dependencies": {
+    "canvas": "^2.8.0",
     "fastify": "^3.25.2",
     "ipfs-http-client": "^55.0.0"
   }

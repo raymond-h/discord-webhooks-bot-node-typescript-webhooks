@@ -1,14 +1,26 @@
 import fastify from 'fastify';
 import { create } from 'ipfs-http-client';
+import webhookRequestJsonSchema from './webhook-request.schema.json';
 import { helloWorld } from './hello-world';
 import { showImage } from './image';
+import { generateClockImage } from './lancer-wallflower-clock';
 
 let ipfsClient: ReturnType<typeof create>;
 const server = fastify({ logger: true });
 
+const webhookOpts = {
+  schema: {
+    body: webhookRequestJsonSchema,
+  },
+};
+
 server.post('/', helloWorld);
 
 server.post('/image', () => showImage(ipfsClient));
+
+server.post('/lancer-wallflower-clock', webhookOpts, (request) =>
+  generateClockImage(ipfsClient, request.body as any)
+);
 
 const start = async () => {
   try {

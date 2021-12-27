@@ -2,7 +2,8 @@
   "extends": "@tsconfig/node16/tsconfig.json",
   "compilerOptions": {
     "outDir": "lib",
-    "lib": ["DOM", "ES2021"]
+    "lib": ["DOM", "ES2021"],
+    "resolveJsonModule": true
   },
   "include": ["src/**/*"]
 }
