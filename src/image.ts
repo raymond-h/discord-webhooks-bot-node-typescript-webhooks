@@ -10,7 +10,6 @@ export async function showImage(
   const { cid } = await ipfsClient.add(frogImage);
 
   return {
-    message: `Good evening; take this frog.`,
-    imageUrl: `https://dweb.link/ipfs/${cid}`
+    message: `Good evening; take this frog. https://dweb.link/ipfs/${cid}`
   };
 }
