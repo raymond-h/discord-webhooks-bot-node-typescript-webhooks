@@ -8,8 +8,10 @@ export async function showImage(
   const frogImage = fs.createReadStream('frog.png');
 
   const { cid } = await ipfsClient.add(frogImage);
+  const gatewayUrl = `https://${cid.toV1()}.ipfs.dweb.link`;
 
   return {
-    message: `Good evening; take this frog. https://${cid.toV1()}.ipfs.dweb.link`
+    message: 'Good evening; take this frog.',
+    imageUrl: gatewayUrl,
   };
 }
