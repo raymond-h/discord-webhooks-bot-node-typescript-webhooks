@@ -134,7 +134,7 @@ export async function generateClockImage(
   const segmentCount = parseInt(body.arguments, 10);
   if (isNaN(segmentCount) || segmentCount < 3 || segmentCount > 20) {
     return {
-      message: `Invalid segment count '${body.arguments}'`,
+      message: `Invalid segment count '${body.arguments}'. You must give an integer between 3 and 20 inclusive.`,
     };
   }
 
