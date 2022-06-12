@@ -3,6 +3,7 @@ version: '3.9'
 services:
   app:
     build: .
+    restart: always
     environment:
       IPFS_API: 'http://ipfs:5001/api/v0'
     expose:
