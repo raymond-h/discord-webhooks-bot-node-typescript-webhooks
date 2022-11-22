@@ -1,6 +1,9 @@
 import { IPFSHTTPClient } from 'ipfs-http-client';
-import { createCanvas, NodeCanvasRenderingContext2D } from 'canvas';
+import canvas from 'canvas';
+import type { NodeCanvasRenderingContext2D } from 'canvas';
 import { WebhookRequest, WebhookResponse } from './interfaces';
+
+const { createCanvas } = canvas;
 
 interface Point {
   x: number;
