@@ -11,7 +11,7 @@ import { join } from 'path';
 const __dirname: string = url.fileURLToPath(new url.URL('.', import.meta.url));
 
 const webhookRequestJsonSchema = await loadJsonFile(
-  join(__dirname, './webhook-request.schema.json')
+  join(__dirname, '../webhook-request.schema.json')
 );
 
 type PromiseResolveType<T> = T extends PromiseLike<infer R> ? R : never;
