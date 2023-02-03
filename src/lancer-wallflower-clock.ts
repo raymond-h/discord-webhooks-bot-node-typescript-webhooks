@@ -1,4 +1,4 @@
-import { IPFSHTTPClient } from 'ipfs-http-client';
+import { IPFS } from 'ipfs-core';
 import canvas from 'canvas';
 import type { NodeCanvasRenderingContext2D } from 'canvas';
 import { WebhookRequest, WebhookResponse } from './interfaces';
@@ -131,7 +131,7 @@ function drawClockComplete(
 }
 
 export async function generateClockImage(
-  ipfsClient: IPFSHTTPClient,
+  ipfsClient: IPFS,
   body: WebhookRequest
 ): Promise<WebhookResponse> {
   const segmentCount = parseInt(body.arguments, 10);

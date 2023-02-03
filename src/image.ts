@@ -1,10 +1,8 @@
 import fs from 'fs';
-import { IPFSHTTPClient } from 'ipfs-http-client';
+import { IPFS } from 'ipfs-core';
 import { WebhookResponse } from './interfaces';
 
-export async function showImage(
-  ipfsClient: IPFSHTTPClient
-): Promise<WebhookResponse> {
+export async function showImage(ipfsClient: IPFS): Promise<WebhookResponse> {
   const frogImage = fs.createReadStream('frog.png');
 
   const { cid } = await ipfsClient.add(frogImage);
