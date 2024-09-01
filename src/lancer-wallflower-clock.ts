@@ -1,4 +1,3 @@
-import { IPFS } from 'ipfs-core';
 import canvas from 'canvas';
 import type { NodeCanvasRenderingContext2D } from 'canvas';
 import { WebhookRequest, WebhookResponse } from './interfaces';
@@ -131,7 +130,6 @@ function drawClockComplete(
 }
 
 export async function generateClockImage(
-  ipfsClient: IPFS,
   body: WebhookRequest
 ): Promise<WebhookResponse> {
   const segmentCount = parseInt(body.arguments, 10);
@@ -146,11 +144,10 @@ export async function generateClockImage(
 
   drawClockComplete(ctx, segmentCount);
 
-  const { cid } = await ipfsClient.add(canvas.createPNGStream());
-  const gatewayUrl = `https://${cid.toV1()}.ipfs.dweb.link`;
+  // TODO canvas.createPNGStream()
 
   return {
-    message: gatewayUrl,
+    message: '{insert image here}',
   };
 }
 
