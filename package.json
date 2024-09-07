@@ -23,6 +23,7 @@
     "singleQuote": true
   },
   "dependencies": {
+    "@dice-roller/rpg-dice-roller": "^5.5.0",
     "canvas": "^2.11.2",
     "fastify": "^3.25.2",
     "got": "^10.6.0",

@@ -10,6 +10,7 @@ import { join } from 'path';
 import { WebhookRequest, WebhookResponse } from './interfaces.js';
 import { calc } from './calc.js';
 import { choose } from './choose.js';
+import { dieRoll } from './die-roll.js';
 const __dirname: string = url.fileURLToPath(new url.URL('.', import.meta.url));
 
 const webhookRequestJsonSchema = await loadJsonFile(
@@ -41,6 +42,7 @@ server.get('/.commands', async () => ({
     { name: 'lancer-wallflower-clock', url: '/lancer-wallflower-clock' },
     { name: 'calc', url: '/calc' },
     { name: 'choose', url: '/choose' },
+    { name: 'roll', url: '/die-roll' },
   ],
 }));
 
@@ -58,6 +60,7 @@ server.post('/lancer-wallflower-clock', webhookOpts, (request) =>
 
 server.post('/calc', webhookOpts, webhookHandler(calc));
 server.post('/choose', webhookOpts, webhookHandler(choose));
+server.post('/die-roll', webhookOpts, webhookHandler(dieRoll));
 
 const start = async () => {
   try {
