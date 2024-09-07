@@ -1,8 +1,6 @@
-import canvas from 'canvas';
-import type { NodeCanvasRenderingContext2D } from 'canvas';
+import { createCanvas } from 'canvas';
+import type { CanvasRenderingContext2D } from 'canvas';
 import { WebhookRequest, WebhookResponse } from './interfaces';
-
-const { createCanvas } = canvas;
 
 interface Point {
   x: number;
@@ -66,7 +64,7 @@ function lineLineIntersection(lineA: Line, lineB: Line): Point | null {
 }
 
 function drawClock(
-  ctx: NodeCanvasRenderingContext2D,
+  ctx: CanvasRenderingContext2D,
   radius: number,
   segmentCount: number,
   startAngle: number,
@@ -111,7 +109,7 @@ function drawClock(
 }
 
 function drawClockComplete(
-  ctx: NodeCanvasRenderingContext2D,
+  ctx: CanvasRenderingContext2D,
   segmentCount: number
 ) {
   ctx.strokeStyle = 'lime';

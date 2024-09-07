@@ -23,7 +23,7 @@
     "singleQuote": true
   },
   "dependencies": {
-    "canvas": "^2.8.0",
+    "canvas": "^2.11.2",
     "fastify": "^3.25.2",
     "got": "^10.6.0",
     "it-all": "^2.0.0",
