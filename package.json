@@ -30,6 +30,7 @@
     "load-json-file": "^7.0.1",
     "lodash": "^4.17.15",
     "nearest-string": "^1.0.6",
+    "nerdamer-prime": "^1.1.23",
     "pokedex-promise-v2": "^4.0.0"
   }
 }

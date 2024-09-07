@@ -7,7 +7,8 @@ import { initializePkmn } from './pkmn.js';
 
 import * as url from 'url';
 import { join } from 'path';
-import { WebhookRequest } from './interfaces.js';
+import { WebhookRequest, WebhookResponse } from './interfaces.js';
+import { calc } from './calc.js';
 const __dirname: string = url.fileURLToPath(new url.URL('.', import.meta.url));
 
 const webhookRequestJsonSchema = await loadJsonFile(
@@ -25,14 +26,20 @@ const webhookOpts = {
   },
 };
 
+const webhookHandler =
+  (fn: (body: WebhookRequest) => Promise<WebhookResponse>) =>
+  (request: { body: any }) =>
+    fn(request.body as WebhookRequest);
+
 server.get('/.commands', async () => ({
   nextFetchDate: new Date(Date.now() + 5 * 60 * 1000).toISOString(),
   commands: [
     { name: 'hello-world-ts', url: '/' },
     { name: 'pkmn', url: '/pkmn' },
     { name: 'frog-image', url: '/image' },
-    { name: 'lancer-wallflower-clock', url: '/lancer-wallflower-clock' }
-  ]
+    { name: 'lancer-wallflower-clock', url: '/lancer-wallflower-clock' },
+    { name: 'calc', url: '/calc' },
+  ],
 }));
 
 server.post('/', helloWorld);
@@ -46,6 +53,8 @@ server.post('/image', () => showImage());
 server.post('/lancer-wallflower-clock', webhookOpts, (request) =>
   generateClockImage(request.body as WebhookRequest)
 );
+
+server.post('/calc', webhookOpts, webhookHandler(calc));
 
 const start = async () => {
   try {
