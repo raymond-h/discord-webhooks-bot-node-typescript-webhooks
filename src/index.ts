@@ -25,18 +25,15 @@ const webhookOpts = {
   },
 };
 
-server.get('/.commands', async (request, reply) => {
-  reply.header('Next-Fetch-Date', new Date(Date.now() + 5 * 60 * 1000).toISOString());
-
-  return {
-    commands: [
-      { name: 'hello-world-ts', url: '/' },
-      { name: 'pkmn', url: '/pkmn' },
-      { name: 'frog-image', url: '/image' },
-      { name: 'lancer-wallflower-clock', url: '/lancer-wallflower-clock' }
-    ]
-  };
-});
+server.get('/.commands', async () => ({
+  nextFetchDate: new Date(Date.now() + 5 * 60 * 1000).toISOString(),
+  commands: [
+    { name: 'hello-world-ts', url: '/' },
+    { name: 'pkmn', url: '/pkmn' },
+    { name: 'frog-image', url: '/image' },
+    { name: 'lancer-wallflower-clock', url: '/lancer-wallflower-clock' }
+  ]
+}));
 
 server.post('/', helloWorld);
 
