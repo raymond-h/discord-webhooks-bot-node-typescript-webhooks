@@ -25,6 +25,15 @@ const webhookOpts = {
   },
 };
 
+server.get('/.commands', async () => ({
+  commands: [
+    { name: 'hello-world-ts', url: '/' },
+    { name: 'pkmn', url: '/pkmn' },
+    { name: 'frog-image', url: '/image' },
+    { name: 'lancer-wallflower-clock', url: '/lancer-wallflower-clock' }
+  ]
+}));
+
 server.post('/', helloWorld);
 
 server.post('/pkmn', webhookOpts, (request) =>
