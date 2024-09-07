@@ -9,6 +9,7 @@ import * as url from 'url';
 import { join } from 'path';
 import { WebhookRequest, WebhookResponse } from './interfaces.js';
 import { calc } from './calc.js';
+import { choose } from './choose.js';
 const __dirname: string = url.fileURLToPath(new url.URL('.', import.meta.url));
 
 const webhookRequestJsonSchema = await loadJsonFile(
@@ -39,6 +40,7 @@ server.get('/.commands', async () => ({
     { name: 'frog-image', url: '/image' },
     { name: 'lancer-wallflower-clock', url: '/lancer-wallflower-clock' },
     { name: 'calc', url: '/calc' },
+    { name: 'choose', url: '/choose' },
   ],
 }));
 
@@ -55,6 +57,7 @@ server.post('/lancer-wallflower-clock', webhookOpts, (request) =>
 );
 
 server.post('/calc', webhookOpts, webhookHandler(calc));
+server.post('/choose', webhookOpts, webhookHandler(choose));
 
 const start = async () => {
   try {
